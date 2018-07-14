@@ -1,4 +1,5 @@
 import Mytraining.DataBase.DemoEntity;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -50,5 +51,11 @@ public class DemoTest {
         session.delete(user);
         tx.commit();
         session.close();
+    }
+
+    @Test
+    public void myQuery(){
+        Query query = session.createSQLQuery("select * from demo");
+        System.out.println(query.list());
     }
 }
